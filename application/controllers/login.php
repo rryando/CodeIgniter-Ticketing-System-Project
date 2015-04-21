@@ -2,6 +2,13 @@
 
 class Login extends CI_Controller
 {
+    
+    public function index()
+    {
+        $this->load->view('template/index.html');
+    }
+    
+    /*
     public function index()
     {
         if (!$this->is_logged_in()){
@@ -26,4 +33,5 @@ class Login extends CI_Controller
     private function logout(){
         $this->session->set_userdata(array(''))
     }
+    */
 }

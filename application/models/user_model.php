@@ -1,6 +1,7 @@
 <?php
 
 class User_model extends CI_Model {
+    /*
 
 	var $table = 'user';
 
@@ -47,4 +48,5 @@ class User_model extends CI_Model {
                       'storeid'=>$storeid);
         return $this->db->insert($this->table, $data);
     }
+    */
 }
