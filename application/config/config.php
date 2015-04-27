@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/OOT/';
+$config['base_url']	= 'http://localhost/OOT-/';
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ $config['base_url']	= 'http://localhost/OOT/';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.html';
+$config['index_page'] = 'index.php';
 
 /*
 |--------------------------------------------------------------------------

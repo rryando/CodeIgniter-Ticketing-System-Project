@@ -728,18 +728,18 @@
     <div class="container">
         <div class="col-lg-8">
             <div class="boxed-grey">
-                <form id="contact-form">
+                <form id="contact-form" action="<?php echo 'booking/insert_booking'?>" method="POST" >
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="name">
                                 Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Enter name" required="required" />
+                            <input type="text" class="form-control" id="name" placeholder="Enter name" required="required" name="name" />
                         </div>
 						<div class="form-group">
                             <label for="phone">
                                 phone</label>
-                            <input type="text" class="form-control" id="phone" placeholder="Enter phone number" required="required" />
+                            <input type="text" class="form-control" id="phone" placeholder="Enter phone number" required="required" name="phone" />
                         </div>
 						
                         <div class="form-group">
@@ -748,7 +748,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
                                 </span>
-                                <input type="email" class="form-control" id="email" placeholder="Enter email" required="required" /></div>
+                                <input type="email" class="form-control" id="email" placeholder="Enter email" required="required" name="email" /></div>
                         </div>
 						
 						<!-- date picker-->
@@ -769,21 +769,21 @@
 						-->
 						<div class="container">
 						<div class="form-group">
-                            <label for="jumlah">
+                            <label for="jumlah" >
                                 jumlah</label>
 						</div>		
-						<div class="col-md-2">
+						<div class="col-md-2" >
                             <label class="radio-inline">
-								<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+								<input type="radio" name="jumlah" id="inlineRadio1" value="1"> 1
 							</label>
 							<label class="radio-inline">
-								<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+								<input type="radio" name="jumlah" id="inlineRadio2" value="2"> 2
 							</label>
 							<label class="radio-inline">
-								<input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
+								<input type="radio" name="jumlah" id="inlineRadio3" value="3"> 3
 							</label>
 							<label class="radio-inline">
-								<input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 4
+								<input type="radio" name="jumlah" id="inlineRadio3" value="4"> 4
 							</label>
                         </div>
 						
@@ -816,8 +816,8 @@
 					-->
 					
                     <div class="col-md-12">
-                        <button type="submit" class="btn btn-skin pull-right" id="btnContactUs">
-                            Send Message</button>
+                        <button type="submit" class="btn btn-skin pull-right" id="submit">
+                            Booking</button>
                     </div>
 					
 					
@@ -894,7 +894,7 @@
         <div class="col-md-6">
 			
             <div class="boxed-grey">
-                <form id="contact-form">
+                <form id="contact-form" >
                 <div class="row">
                     <div class="col-md-12">
 						 <div class="form-group">
