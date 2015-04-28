@@ -17,6 +17,7 @@ public function insert_booking(){
 	//echo $data['hp'];
 	$data['email']=$this->input->post('email');
 	$data['jumlah']=$this->input->post('jumlah');
+	$data['date']=$this->input->post('date');
 	$this->customer_model->insert_booking($data);
 	//echo "<div class='alert alert-info'> Successfully Booked </div>";
 	redirect(site_url('login/index'));

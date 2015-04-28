@@ -770,7 +770,7 @@
 						<div class="container">
 						<div class="form-group">
                             <label for="jumlah" >
-                                jumlah</label>
+                                jumlah orang</label>
 						</div>		
 						<div class="col-md-2" >
                             <label class="radio-inline">
@@ -797,7 +797,7 @@
 										tanggal
 								</label>
 							<div class="col-md-2">	
-							<input class="datepicker" type="text" name="date" data-date-format="mm-dd-yyyy">  <!-- ini mau di isi sama datepicker, tapi masih gagal di javascript nya ,ini yan masih error -->
+							<input class="datepicker" type="text" name="date" data-date-format="yyyy-dd-mm">  <!-- ini mau di isi sama datepicker, tapi masih gagal di javascript nya ,ini yan masih error -->
 							</div>
 
 								</div>
