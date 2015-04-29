@@ -21,8 +21,18 @@ public function insert_booking(){
 	$this->customer_model->insert_booking($data);
 	//echo "<div class='alert alert-info'> Successfully Booked </div>";
 	redirect(site_url('login/index'));
+	
 }
 
+public function cek_booking(){
+	$this->load->model('customer_model');
+	$data=$this->input->post('kode');
+	echo $data;
+	echo "tes booking";
+	$this->customer_model->select_by_id($data)->row();
+	//$this->load->view('template/index.php',$data);
+
+}
 
 
 

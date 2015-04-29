@@ -894,13 +894,13 @@
         <div class="col-md-6">
 			
             <div class="boxed-grey">
-                <form id="contact-form" >
+                <form id="cekbooking-form" action="<?php echo 'booking/cek_booking'?>" method="post">
                 <div class="row">
                     <div class="col-md-12">
-						 <div class="form-group">
+						 <div class="form-group" >
                             <label for="name">
                                 Kode Konfirmasi </label>
-                            <input type="text" class="form-control" id="name" placeholder="Masukan kode konfirmasi" required="required" />
+                            <input type="text" class="form-control" id="id_customer" placeholder="Masukan kode konfirmasi" name="kode" required="required" />
 						<!--	
 							<div class="alert">
 								<a href="#" class="alert-link"></a> 
@@ -916,7 +916,7 @@
 							-->
 						<br>
 						<div class="form-actions">
-							<input type="submit" name="validate" class="btn btn-info pull-right" value="Submit" id="submit"/>
+							<input type="submit"   name="validate" class="btn btn-info pull-right" value="cek" id="submit"/>
 						</div>	
 						
 							
@@ -924,10 +924,10 @@
 						<br>
 						<br>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="name" placeholder="Enter name" required="required" />
+                            <input type="text" class="form-control" id="name" placeholder="" required="required" disabled/>
                         </div>
 						<div class="form-group">
-                            <input type="text" class="form-control" id="phone" placeholder="Enter phone number" required="required" />
+                            <input type="text" class="form-control" id="phone" placeholder="" required="required" disabled />
                         </div>
 					
 						
@@ -942,6 +942,10 @@
 									<input type="file" id="exampleInputFile">
 									
 						</div>
+						                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-skin pull-right" id="btnContactUs">
+                            submit</button>
+                    </div>
                     </div>
                     
 					<!--
@@ -956,12 +960,11 @@
 						
 						
                     
-                    <div class="col-md-12">
-                        <button type="submit" class="btn btn-skin pull-right" id="btnContactUs">
-                            Send Message</button>
-                    </div>
+
                 </div>
                 </form>
+
+
             </div>
         </div>
 		
