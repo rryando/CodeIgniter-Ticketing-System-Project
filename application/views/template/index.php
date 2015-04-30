@@ -727,8 +727,9 @@
 	<div class="col-lg-2"></div>
     <div class="container">
         <div class="col-lg-8">
+        	
             <div class="boxed-grey">
-                <form id="contact-form" action="<?php echo 'booking/insert_booking'?>" method="POST" >
+                <form id="cek booking" action="<?php echo 'booking/addBooking'?>" method="POST" >
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
@@ -769,10 +770,12 @@
 						-->
 						<div class="container">
 						<div class="form-group">
-                            <label for="jumlah" >
-                                jumlah orang</label>
+                            
 						</div>		
 						<div class="col-md-2" >
+							<label for="jumlah" >
+                                jumlah orang</label>
+                                <br>
                             <label class="radio-inline">
 								<input type="radio" name="jumlah" id="inlineRadio1" value="1"> 1
 							</label>
@@ -793,10 +796,12 @@
 						<div class="container">
 						
 							<div class="form-group">
+								
+							<div class="col-md-2">	
 								<label for="dp">
 										tanggal
 								</label>
-							<div class="col-md-2">	
+								<br>
 							<input class="datepicker" type="text" name="date" data-date-format="yyyy-dd-mm">  <!-- ini mau di isi sama datepicker, tapi masih gagal di javascript nya ,ini yan masih error -->
 							</div>
 
@@ -916,7 +921,7 @@
 							-->
 						<br>
 						<div class="form-actions">
-							<input type="submit"   name="validate" class="btn btn-info pull-right" value="cek" id="submit"/>
+							<input type="submit"   name="validate" class="btn btn-info pull-right"  value="cek" id="submit"/>
 						</div>	
 						
 							
@@ -924,13 +929,13 @@
 						<br>
 						<br>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="name" placeholder="" required="required" disabled/>
+                            <input type="text" class="form-control" id="name" placeholder=" <?php echo '$booking->nama' ?>" required="required" name="name" disabled/>
                         </div>
 						<div class="form-group">
-                            <input type="text" class="form-control" id="phone" placeholder="" required="required" disabled />
+                            <input type="text" class="form-control" id="phone" placeholder=" <?php echo '$booking->hp' ?>" required="required" name="phone "disabled />
                         </div>
 					
-						
+						</form>
 						<!-- date picker-->
 							
 						
@@ -958,11 +963,12 @@
 						-->
 						
 						
-						
+					
                     
 
                 </div>
-                </form>
+                
+                
 
 
             </div>
