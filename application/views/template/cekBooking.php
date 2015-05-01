@@ -34,15 +34,8 @@
         </li>
       </ul>
      </div> 
-	
-
-
-
-	
-
-			<div class="container">
-				
-				<div class="col-lg-10">
+	<div class="container">
+		<div class="col-lg-10">
 				<div class="boxed-grey">
 				<table class="table table-bordered ">
 					
@@ -84,12 +77,34 @@
 				</table>
         	<br />
 
-        	<div class="form-group">
+<!--         	<div class="form-group">
 						<p class="help-block align-left">Upload Bukti Transfer</p>
 							<label for="exampleInputFile">File input</label>
 									<input type="file" id="exampleInputFile">
 									
-						</div>
+						</div> -->
+
+								<div class="upload_file">
+                                        <div class="form-group">
+                                            <div class="col-md-6 column">
+                                                <div class="form-group">
+                                                    <label for="userfile"><h5>Attachment File Upload</h5></label>
+                                                    <br>
+                                                    <label for="title">Title</label>
+                                                    <input class="form-control" type="text" name="title" id="title" value="" placeholder="Attachment title"/>
+                                                </div>
+                                                <input type="file" name="userfile" id="userfile" size="20" />
+                                                <button class="btn btn-success btn-sm pull-right" id="upload" type="button" name="upload" id="upload" >upload</button>
+                                                <br>
+                                            </div>
+                                            <div class="col-md-6 column">
+                                                <label for="userfile"><h5>uploaded file</h5></label>
+                                                <div id="files"></div>
+                                                
+                                            </div>
+                                         </div>
+                                    </div>			
+
     	</div>
 
     </div>
@@ -100,4 +115,6 @@
      
 
 </body>
+
+<script src="<?=base_url('assets/js/jquery.ajaxfileupload.js'); ?>"></script>
 </html>
