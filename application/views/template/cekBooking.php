@@ -1,7 +1,7 @@
 
 <html>
 <head>
-	<title></title>
+	<title>View Cek</title>
 
 	<link href="<?=base_url('assets/css/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css">
 	<link href="<?=base_url('assets/css/jquery-ui.min.css'); ?>" rel="stylesheet" type="text/css">
@@ -18,7 +18,7 @@
 
  	<div class="collapse navbar-collapse navbar-right navbar-main-collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#intro">Home</a></li>
+        <li class="active"><a href="<?php echo site_url('booking');?>">Home</a></li>
         <li><a href="#about">About</a></li>
 		<li><a href="#contact">Contact</a></li>
 		<li><a href="#price">Price</a></li>
@@ -37,74 +37,12 @@
 	
 
 
-<!-- 
-    <section id="CekBooking" class="home-section text-center">
-		<div class="heading-contact">
-			<div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2">
-					<div class="wow bounceInDown" data-wow-delay="0.4s">
-					<div class="section-heading">
-					<h2>Cek Booking</h2>
-					<i class="fa fa-2x fa-angle-down"></i>
 
-					</div>
-					</div>
-				</div>
-			</div>
-			</div>
-		</div>
-		<div class="container">
-
-		<div class="row">
-			<div class="col-lg-2 col-lg-offset-5">
-				<hr class="marginbot-50">
-			</div>
-		</div>
-	<div class="col-md-3" ></div>	
-    <div class="container">
-		
-        <div class="col-md-6">
-			
-            <div class="boxed-grey">
-                <form id="cekbooking-form" action="<?php echo 'booking/cek_booking'?>" method="post">
-                <div class="row">
-                    <div class="col-md-12">
-						 <div class="form-group" >							
-                        </div>
-                        
-                         <input type="text" class="form-control" id="name" value="<?php echo '$booking->nama'; ?>" placeholder="" required="required" name="name" disabled/>
-                        
-							<br>
-							<br>
-                         <input type="text" class="form-control" id="phone" value="<?php echo '$booking->hp'; ?>" placeholder="" required="required" name="phone "disabled />
-				</form>
-						<div class="form-group">
-							<p class="help-block align-left">Upload Bukti Transfer</p>
-							<label for="exampleInputFile">File input</label>
-									<input type="file" id="exampleInputFile">
-									
-						</div>
-						<div class="col-md-12">
-                        <button type="submit" class="btn btn-skin pull-right" id="btnContactUs">
-                            submit</button>
-                    </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-
-    </div>	
-
-		</div>
-	</section> -->
 	
 
 			<div class="container">
 				
-				<div class="col-lg-8">
+				<div class="col-lg-10">
 				<div class="boxed-grey">
 				<table class="table table-bordered ">
 					
@@ -121,24 +59,43 @@
                 </tr>
               </thead>
             <tbody>
-<!--             
-            	 <tr>
-            	<td class="col-md-3"><?php echo $booking['nama']?></td>
-            	<td class="col-md-3"><?php echo $booking['no_identias']?></td>
-            	<td class="col-md-3"><?php echo $booking['hp']?></td>
-            	<td class="col-md-3"><?php echo $booking['alamat']?></td>
-            	<td class="col-md-3"><?php echo $booking['email']?></td>
-            	<td class="col-md-3"><?php echo $booking['jumlah']?></td>
-            	<td class="col-md-3" ><?php echo $booking['tanggal']?></td>	
+              <?php foreach ($Booking as $cek )   :?>
+             	
+             	<tr>
+            	<td class="col-md-3"><?php echo $cek['nama']?></td>
+            	<td class="col-md-3"><?php echo $cek['no_identitas']?></td>
+            	<td class="col-md-3"><?php echo $cek['hp']?></td>
+            	<td class="col-md-3"><?php echo $cek['alamat']?></td>
+            	<td class="col-md-3"><?php echo $cek['email']?></td>
+            	<td class="col-md-3"><?php echo $cek['jumlah']?></td>
+            	<td class="col-md-3" ><?php echo $cek['date']?></td>	
  				<td class="col-md-3"></th>
+            
+
             	</tr>
- -->
+            
+
+           <?php endforeach;?>
+              
+            	 
+  
 
             		</tbody>
 				</table>
         	<br />
+
+        	<div class="form-group">
+						<p class="help-block align-left">Upload Bukti Transfer</p>
+							<label for="exampleInputFile">File input</label>
+									<input type="file" id="exampleInputFile">
+									
+						</div>
     	</div>
+
     </div>
+
+</div>
+</div>
 </div>
      
 

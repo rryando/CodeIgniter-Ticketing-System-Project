@@ -17,15 +17,14 @@
 		}
 
 		 function select_by_id ($id){
-		    	$this->db->select('*');
-		    	$this->db->from('customer');
-		    	$this->db->where('id_customer',$id);
-		    	$this->db->limit(1);
-		
-		    	return $this->db->get();
-		   // $user = $this->db->get_where('customer',array('id_customer' => $id ))->get();
+		   // return $this->db->select('*')->from('customer')->where('id_customer',$id)->limit(1)->result();
+				
 
-		   // return $user;
+
+
+		    $user = $this->db->get_where('customer',array('id_customer' => $id ))->result_array();
+
+		    return $user;
 
  			//return $this->db->select()->get_where('customer',array('id_customer')=>$id)->limit(1)->result();
 

@@ -21,7 +21,7 @@ public function addBooking(){
 	$data['email']=$this->input->post('email');
 	$data['jumlah']=$this->input->post('jumlah');
 	$data['date']=$this->input->post('date');
-	echo $data['nama'] ;
+	//echo $data['nama'] ;
 	$this->customer_model->insert_booking($data);
 	redirect(site_url('login'));
 	//echo "<div class='alert alert-info'> Successfully Booked </div>";
@@ -38,14 +38,28 @@ public function cekOpen(){
 public function cek_booking(){
 
 	$data=$this->input->post('kode');
-	echo $data;
-	echo "tes booking";
+	// echo $data;
+	// echo "tes booking";
 	$this->load->model('customer_model');
-	$booking['data']=$this->customer_model->select_by_id($data)->row();
+	$booking=$this->customer_model->select_by_id($data);
+
+
 	// echo $booking['nama'];
 	// echo $booking['hp'];
-	$this->load->view('template/CekBooking',$booking);
+	// echo "tes output ";
+	// echo "";
+
+
+	// 	foreach ($booking as $key) {
+	// 	echo $key['nama']. " nama ";
+	// 	echo $key['hp']. " hp";
+	// 	echo $key['no_identitas']. " identitas ";
+	// }
+
+	$this->load->view('template/CekBooking',array('Booking' =>$booking ));
+
 	// redirect(site_url('template/CekBooking'));
+
 
 }
 
