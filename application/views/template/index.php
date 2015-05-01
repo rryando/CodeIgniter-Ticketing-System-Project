@@ -43,7 +43,7 @@
             </div>
 	<!-- NAVBAR -->
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+    <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#intro">Home</a></li>
         <li><a href="#about">About</a></li>
@@ -729,7 +729,7 @@
         <div class="col-lg-8">
         	
             <div class="boxed-grey">
-                <form id="cek booking" action="<?php echo 'booking/addBooking'?>" method="POST" >
+                <form id="booking" action="<?php echo 'booking/addBooking'?>" method="POST" >
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
@@ -737,6 +737,18 @@
                                 Name</label>
                             <input type="text" class="form-control" id="name" placeholder="Enter name" required="required" name="name" />
                         </div>
+                        <div class="form-group">
+                            <label for="ktp">
+                                No.KTP</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter name" required="required" name="ktp" />
+                        </div>
+                        <div class="form-group">
+                            <label for="address">
+                                Alamat </label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter name" required="required" name="alamat" />
+                        </div>
+                        
+
 						<div class="form-group">
                             <label for="phone">
                                 phone</label>
@@ -821,12 +833,20 @@
 					-->
 					
                     <div class="col-md-12">
-                        <button type="submit" class="btn btn-skin pull-right" id="submit">
+                        <button type="submit" data-toggle="modal" data-target=".bs-example-modal-sm" class="btn btn-skin " id="submit">
                             Booking</button>
                     </div>
 					
 					
-					
+					<!-- modal -->
+					<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  						<div class="modal-dialog modal-sm">
+   							 <div class="modal-content">
+      							<h2> tes model</h2>
+      							<button type="submit" data-toggle="modal" data-target=".bs-example-modal-sm" class="btn btn-skin pull-right" id="submit">
+    						</div>
+  						</div>
+					</div>
 					
 					
                 </div>
@@ -870,7 +890,9 @@
 	</section>
 	
 	<!-- Section: Cek Booking Booking -->
-    <section id="CekBooking" class="home-section text-center">
+    
+	
+	<section id="CekBooking" class="home-section text-center">
 		<div class="heading-contact">
 			<div class="container">
 			<div class="row">
@@ -906,19 +928,7 @@
                             <label for="name">
                                 Kode Konfirmasi </label>
                             <input type="text" class="form-control" id="id_customer" placeholder="Masukan kode konfirmasi" name="kode" required="required" />
-						<!--	
-							<div class="alert">
-								<a href="#" class="alert-link"></a> 
-									 <button type="button" class="btn btn-primary btn-lg pull-right">Large button</button> 
-									<button type="button" class="btn btn-default btn-lg pull-right">Validate</button>
-							</div>
-							
-							
-							<div class="btn-group alert">
-								<button type="button" class="btn btn-default btn-lg pull-right">Left</button>
-							</div>
-							
-							-->
+						
 						<br>
 						<div class="form-actions">
 							<input type="submit"   name="validate" class="btn btn-info pull-right"  value="cek" id="submit"/>
@@ -926,30 +936,12 @@
 						
 							
                         </div>
-						<br>
-						<br>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="name" placeholder=" <?php echo '$booking->nama' ?>" required="required" name="name" disabled/>
-                        </div>
-						<div class="form-group">
-                            <input type="text" class="form-control" id="phone" placeholder=" <?php echo '$booking->hp' ?>" required="required" name="phone "disabled />
-                        </div>
+
 					
 						</form>
-						<!-- date picker-->
-							
+
 						
-						<!-- -->
-						
-						<div class="form-group">
-						<p class="help-block align-left">Upload Bukti Transfer</p>
-							<label for="exampleInputFile">File input</label>
-									<input type="file" id="exampleInputFile">
-									
-						</div>
-						                    <div class="col-md-12">
-                        <button type="submit" class="btn btn-skin pull-right" id="btnContactUs">
-                            submit</button>
+
                     </div>
                     </div>
                     
@@ -974,42 +966,11 @@
             </div>
         </div>
 		
-		<!--
 		
-		<div class="col-lg-4">
-			<div class="widget-contact">
-				<h5>Main Office</h5>
-				
-				<address>
-				  <strong>Squas Design, Inc.</strong><br>
-				  Tower 795 Folsom Ave, Beautiful Suite 600<br>
-				  San Francisco, CA 94107<br>
-				  <abbr title="Phone">P:</abbr> (123) 456-7890
-				</address>
-
-				<address>
-				  <strong>Email</strong><br>
-				  <a href="mailto:#">email.name@example.com</a>
-				</address>	
-				<address>
-				  <strong>We're on social networks</strong><br>
-                       	<ul class="company-social">
-                            <li class="social-facebook"><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                            <li class="social-twitter"><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                            <li class="social-dribble"><a href="#" target="_blank"><i class="fa fa-dribbble"></i></a></li>
-                            <li class="social-google"><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
-                        </ul>	
-				</address>					
-			
-			</div>	
-		</div>
-			-->
     </div>	
 
 		</div>
 	</section>
-	
-	
 
 	
 	<!-- /Section: contact -->

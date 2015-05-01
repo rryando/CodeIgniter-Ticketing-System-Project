@@ -13,6 +13,8 @@ public function __construct(){
 public function addBooking(){
 	$this->load->model('customer_model');
 	$data['nama']= $this->input->post('name');
+	$data['no_identitas']=$this->input->post('ktp');
+	$data['alamat']=$this->input->post('alamat');
 	$data['hp']=$this->input->post('phone');
 	//echo $data['nama'];
 	//echo $data['hp'];
@@ -27,15 +29,23 @@ public function addBooking(){
 
 }
 
-public function cek_booking(){
+public function cekOpen(){
+	$this->load->view('template/CekBooking');
 	$this->load->model('customer_model');
-	$data=$this->input->post('kode');
-	// echo $data;
-	// echo "tes booking";
-	$booking['data']=$this->customer_model->select_by_id($data)->row();
-	redirect(site_url('login/index.php#CekBooking'));
-	$this->load->view('template/index.php#CekBooking',$booking);
+}
 
+
+public function cek_booking(){
+
+	$data=$this->input->post('kode');
+	echo $data;
+	echo "tes booking";
+	$this->load->model('customer_model');
+	$booking['data']=$this->customer_model->select_by_id($data)->row();
+	// echo $booking['nama'];
+	// echo $booking['hp'];
+	$this->load->view('template/CekBooking',$booking);
+	// redirect(site_url('template/CekBooking'));
 
 }
 
