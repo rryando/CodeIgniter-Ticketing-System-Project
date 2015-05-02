@@ -4,6 +4,7 @@
 </head>
 <body>
 	<h4> finish upload </h4>
+	<?php echo " error bro " ?>
 	<?php echo $error?>
 
 	<?php 

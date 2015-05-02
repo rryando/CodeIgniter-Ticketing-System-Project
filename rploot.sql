@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2015 at 09:44 AM
+-- Generation Time: May 02, 2015 at 03:03 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.1
 
@@ -45,8 +45,10 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
 ('10f9ce8a7a7e6d9c2966144411bddca5', '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:37.0) Gecko/20100101 Firefox/37.0', 1430552582, ''),
 ('369b1e8826a04ff70b0d974bf39861d8', '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:37.0) Gecko/20100101 Firefox/37.0', 1430541071, ''),
+('3779add517a4e171f974dc7795031228', '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:37.0) Gecko/20100101 Firefox/37.0', 1430571202, ''),
 ('76585860e97465e1988a8118e919d870', '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:37.0) Gecko/20100101 Firefox/37.0', 1430543041, ''),
-('d7898b130fec583a44fd74d1c4014beb', '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:37.0) Gecko/20100101 Firefox/37.0', 1430549383, '');
+('d7898b130fec583a44fd74d1c4014beb', '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:37.0) Gecko/20100101 Firefox/37.0', 1430549383, ''),
+('f18a4f3232e8ffc4eca0ca768fd051e6', '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:37.0) Gecko/20100101 Firefox/37.0', 1430563596, '');
 
 -- --------------------------------------------------------
 

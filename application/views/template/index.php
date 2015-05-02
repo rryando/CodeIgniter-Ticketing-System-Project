@@ -398,29 +398,29 @@
 				
 				<p>
 				
-					<p>
+					<p align="left">
 					1.	Pelanggan berhak mendapatkan tempat penginapan dan fasilitas dengan membayar sejumlah Rp.75,000.-/Orang , Rp.225.000.-/4 orang sekamar 
 					</p>
 					
-					<p>
+					<p align="left" >
 					2.	Fasilitas yang didapatkan adalah amenities berupa air mineral 330 ml, sabun mandi dan shampoo perpack perharinya. 
 					</p>
-					<p>
+					<p align="left">
 					3.	Amenities dapat ditukarkan dengan amidis galon apabila :
-						<p> a.	1 orang/kamar menginap = 6 Hari </p>
-						<p> b.	2 orang/kamar menginap = 4 Hari </p>
-						<p> c.	3-4 orang/kamar menginap = 2 Hari </p> 
+						<p align="left" style="text-indent: 5em;" > a.	1 orang/kamar menginap = 6 Hari </p>
+						<p align="left" style="text-indent: 5em;" > b.	2 orang/kamar menginap = 4 Hari </p>
+						<p align="left" style="text-indent: 5em;" > c.	3-4 orang/kamar menginap = 2 Hari </p> 
 
 					</p>
 					
-					<p>
+					<p align="left">
 					
 					4.	Untuk tambahan fasilitas :
-						<p> a.	Selimut, dikenakan biaya tambahan Rp.15,000,-/pcs. </p>
-						<p>b.	Air galon amidis, dikenakan biaya tambahan Rp.14,500,-/pcs. </p>
+						<p align="left"> a.	Selimut, dikenakan biaya tambahan Rp.15,000,-/pcs. </p>
+						<p align="left"> b.	Air galon amidis, dikenakan biaya tambahan Rp.14,500,-/pcs. </p>
 
 					</p>
-				</p>
+				</p align="left">
 				
 				
 		</div>
@@ -461,7 +461,7 @@
 						<img src="<?=base_url('assets/gambar/convert/61_big.jpg'); ?>" alt="" />
 					</div>
 					<div class="service-desc">
-						<h5>Security</h5>
+						
 						
 					</div>
                 </div>
@@ -475,7 +475,7 @@
 						<img src="<?=base_url('assets/gambar/convert/62_big.jpg'); ?>" alt="" />
 					</div>
 					<div class="service-desc">
-						<h5>WIFI</h5>
+						
 						
 					</div>
                 </div>
@@ -489,7 +489,7 @@
 						<img src="<?=base_url('assets/gambar/convert/72_big.jpg'); ?>" alt="" />
 					</div>
 					<div class="service-desc">
-						<h5>KAMAR MANDI DALAM</h5>
+						
 						
 					</div>
                 </div>
@@ -504,7 +504,7 @@
 						<img src="<?=base_url('assets/gambar/convert/IMG_20141118_190922.jpg') ?>" alt="" />
 					</div>
 					<div class="service-desc">
-						<h5>TEMPAT TIDUR SUSUN</h5>
+						
 						
 					</div>
                 </div>
@@ -518,24 +518,13 @@
 						<img src="<?=base_url('assets/gambar/convert/IMG_20141118_190928.jpg'); ?>" alt="" />
 					</div>
 					<div class="service-desc">
-						<h5>Parkir Luas</h5>
+						
 					</div>
                 </div>
 				</div>
             </div>
 			
-			<div class="col-xs-14 col-sm-12 col-lg-12">
-				<div class="wow fadeInLeft" data-wow-delay="0.2s">
-                <div class="service-box">
-					<div class="service-icon">
-						<img src="<?=base_url('assets/gambar/convert/images.png'); ?>" alt="" />
-					</div>
-					<div class="service-desc">
-						<h5>Food Court</h5>
-					</div>
-                </div>
-				</div>
-            </div>
+
 
         </div>	
 				
