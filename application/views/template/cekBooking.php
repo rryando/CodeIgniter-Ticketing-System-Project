@@ -89,7 +89,7 @@
 									<input type="file" id="gambar" name="image" />
                   <br>
                 <!--   <input class="btn  btn-sm pull-left" id="upload" type="submit" placeholder="upload" name="upload" id="upload" /> -->
-                <input type="submit"   name="image" class="btn btn-info pull-left"  value="Upload" id="upload"/>
+                <input type="submit"   name="validate" class="btn btn-info pull-left"  value="Upload" id="upload"/>
 
 							</form>		
 

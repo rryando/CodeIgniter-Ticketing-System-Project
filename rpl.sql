@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4.1
+-- version 4.2.9.1
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: May 02, 2015 at 09:44 AM
--- Server version: 5.6.11
--- PHP Version: 5.5.1
+-- Host: localhost:3306
+-- Generation Time: 02 Mei 2015 pada 07.14
+-- Versi Server: 5.5.40
+-- PHP Version: 5.4.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,14 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `rploot`
+-- Database: `rpl`
 --
-
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ci_sessions`
+-- Struktur dari tabel `ci_sessions`
 --
 
 CREATE TABLE IF NOT EXISTS `ci_sessions` (
@@ -32,29 +31,24 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
   `ip_address` varchar(45) NOT NULL DEFAULT '0',
   `user_agent` varchar(120) NOT NULL,
   `last_activity` int(10) unsigned NOT NULL DEFAULT '0',
-  `user_data` text NOT NULL,
-  PRIMARY KEY (`session_id`),
-  KEY `last_activity_idx` (`last_activity`)
+  `user_data` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `ci_sessions`
+-- Dumping data untuk tabel `ci_sessions`
 --
 
 INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('10f9ce8a7a7e6d9c2966144411bddca5', '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:37.0) Gecko/20100101 Firefox/37.0', 1430552582, ''),
-('369b1e8826a04ff70b0d974bf39861d8', '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:37.0) Gecko/20100101 Firefox/37.0', 1430541071, ''),
-('76585860e97465e1988a8118e919d870', '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:37.0) Gecko/20100101 Firefox/37.0', 1430543041, ''),
-('d7898b130fec583a44fd74d1c4014beb', '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:37.0) Gecko/20100101 Firefox/37.0', 1430549383, '');
+('bac8fc11e0cf597f7cad40ce3ef7519f', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36', 1430575940, 'a:5:{s:9:"user_data";s:0:"";s:8:"username";s:5:"admin";s:6:"userid";s:2:"21";s:12:"is_logged_in";b:1;s:10:"privileges";s:5:"admin";}');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer`
+-- Struktur dari tabel `customer`
 --
 
 CREATE TABLE IF NOT EXISTS `customer` (
-  `id_customer` int(11) NOT NULL AUTO_INCREMENT,
+`id_customer` int(11) NOT NULL,
   `nama` varchar(25) NOT NULL,
   `no_identitas` int(25) NOT NULL,
   `hp` int(25) NOT NULL,
@@ -65,12 +59,11 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `date_out` date NOT NULL,
   `gambar` varchar(25) NOT NULL,
   `biaya` bigint(10) NOT NULL,
-  `id_kamar` int(25) NOT NULL,
-  PRIMARY KEY (`id_customer`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=38 ;
+  `id_kamar` int(25) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `customer`
+-- Dumping data untuk tabel `customer`
 --
 
 INSERT INTO `customer` (`id_customer`, `nama`, `no_identitas`, `hp`, `alamat`, `email`, `jumlah`, `date_in`, `date_out`, `gambar`, `biaya`, `id_kamar`) VALUES
@@ -115,7 +108,7 @@ INSERT INTO `customer` (`id_customer`, `nama`, `no_identitas`, `hp`, `alamat`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kamar`
+-- Struktur dari tabel `kamar`
 --
 
 CREATE TABLE IF NOT EXISTS `kamar` (
@@ -123,23 +116,78 @@ CREATE TABLE IF NOT EXISTS `kamar` (
   `nomor` int(11) NOT NULL,
   `kapasitas` int(11) NOT NULL,
   `harga` varchar(15) NOT NULL,
-  PRIMARY KEY (`id_kamar`)
+  `email` varchar(23) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `kamar`
+--
+
+INSERT INTO `kamar` (`id_kamar`, `nomor`, `kapasitas`, `harga`, `email`) VALUES
+(13, 13, 2, 'MOGOK NGODING', 'MOGOK NGODING');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(9) NOT NULL AUTO_INCREMENT,
+`id` int(9) NOT NULL,
   `username` varchar(18) NOT NULL,
   `password` varchar(18) NOT NULL,
-  `privileges` varchar(7) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `privileges` varchar(7) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=667 DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data untuk tabel `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `password`, `privileges`) VALUES
+(21, 'admin', 'admin', 'admin');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `ci_sessions`
+--
+ALTER TABLE `ci_sessions`
+ ADD PRIMARY KEY (`session_id`), ADD KEY `last_activity_idx` (`last_activity`);
+
+--
+-- Indexes for table `customer`
+--
+ALTER TABLE `customer`
+ ADD PRIMARY KEY (`id_customer`);
+
+--
+-- Indexes for table `kamar`
+--
+ALTER TABLE `kamar`
+ ADD PRIMARY KEY (`id_kamar`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `customer`
+--
+ALTER TABLE `customer`
+MODIFY `id_customer` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=38;
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+MODIFY `id` int(9) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=667;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

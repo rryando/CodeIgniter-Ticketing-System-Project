@@ -1,52 +1,65 @@
 <?php
 
 class User_model extends CI_Model {
-    /*
+    function __construct()
+    {
+        parent::__construct();
+    }
 
-	var $table = 'user';
+    public function get_all($id)
+    {
+        $users = $this->db
+            ->get_where('user', array('id' => $id))
+            ->result_array();
 
-    function User_model(){
-		parent::__construct();
-	}
+        return $users;
+    }
 
-	function changepassword($data){
-        return  $this->db->query("update ".$this->table." set password = '".$data->password."' where userid =".$data->userid);
+    public function get_id($username)
+    {
+        $row = $this->db->get_where('user', array('username' => $username))->row();
+        return $row->id;
+    }
+ 
+  
+    public function get_privileges($username)
+    {
+        $privileges = $this->db->select('privileges')
+            ->get_where('user', array('username'=>$username))
+            ->row();
+        
+        return $privileges->privileges;
     }
     
-    function getAll(){
-        return  $this->db->query("SELECT userid,username, password, name, level, storeid, isactive FROM user")->result_array();
+    public function get_usernames()
+    {
+        $users = $this->db->select('username')
+            ->order_by('username')
+            ->get('user')
+            ->result_array();
+
+        return $users;
     }
     
-    function insert($data){
-        return $this->db->insert($this->table, $data);
+    public function isAdmin($username)
+    {
+        $privileges = $this->db->select('privileges')
+            ->get_where('user', array('username'=>$username))->row('privileges');
+        
+        return $privileges;
     }
-    
-    function delete($data){
-        return $this->db->delete($this->table,array('userid'=>$data->userid));
+
+    public function check_password($username, $password)
+    {
+        $check = $this->db->get_where('user', array('username' => $username, 'password' => $password));
+        
+        return ($check->num_rows == 1) ? TRUE : FALSE;
     }
-    
-    function getBindData($username){
-        return $this->db->select('storeid')
-            ->from('user')
-            ->where('username',$username)
-            ->get()
-            ->result();
+
+    public function is($username, $password)
+    {
+        $query = $this->db->get_where('user', array('username' => $username, 'password' => $password));
+        
+        return ($query->num_rows == 1) ? TRUE : FALSE;
     }
-    
-    function updateisactive($data){
-        return  $this->db->query("update ".$this->table." set isactive = '".$data->isactive."' where userid =".$data->userid);
-    }
-    
-    function getbyid($id){
-        return $this->db->get_where($this->table , array('userid' => $id))->result_array();
-    }
-    
-    function register($username,$password,$name,$storeid){
-        $data = array('username'=>$username,
-                      'password'=>$password,
-                      'name'=>$name,
-                      'storeid'=>$storeid);
-        return $this->db->insert($this->table, $data);
-    }
-    */
 }
