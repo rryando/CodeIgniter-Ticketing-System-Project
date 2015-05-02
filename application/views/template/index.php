@@ -811,12 +811,21 @@
 								
 							<div class="col-md-2">	
 								<label for="dp">
-										tanggal
+										tanggal masuk
 								</label>
 								<br>
-							<input class="datepicker" type="text" name="date" data-date-format="yyyy-dd-mm">  <!-- ini mau di isi sama datepicker, tapi masih gagal di javascript nya ,ini yan masih error -->
+							<input class="datepicker" type="text" name="datein" data-date-format="yyyy-dd-mm">  <!-- ini mau di isi sama datepicker, tapi masih gagal di javascript nya ,ini yan masih error -->
 							</div>
-
+							
+							<div class="form-group">
+							<div class="col-md-2">	
+								<label for="dp">
+										tanggal keluar
+								</label>
+								<br>
+							<input class="datepicker" type="text" name="dateout" data-date-format="yyyy-dd-mm">  <!-- ini mau di isi sama datepicker, tapi masih gagal di javascript nya ,ini yan masih error -->
+							</div>
+							</div>
 								</div>
 							
 						</div>

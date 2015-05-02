@@ -45,27 +45,28 @@
                   <th class="col-md-3">no identitas</th>
                   <th class="col-md-3">hp</th>
                   <th class="col-md-3">alamat</th>
-				  <th class="col-md-3">email</th>
-				  <th class="col-md-3">jumlah orang</th>
-				  <th class="col-md-3">tanggal masuk</th>
-          <th class="col-md-3">tanggal keluar</th>
-				  <th class="col-md-3">total biaya</th>
+				          <th class="col-md-3">email</th>
+				          <th class="col-md-3">jumlah orang</th>
+				          <th class="col-md-3">tanggal masuk</th>
+                  <th class="col-md-3">tanggal keluar</th>
+				          <th class="col-md-3">total biaya</th>
                 </tr>
               </thead>
             <tbody>
               <?php foreach ($Booking as $cek )   :?>
-             	
+             	<?php  
+              $id = $cek['id_customer'];  
+              ?>
              	<tr>
             	<td class="col-md-3"><?php echo $cek['nama']?></td>
             	<td class="col-md-3"><?php echo $cek['no_identitas']?></td>
             	<td class="col-md-3"><?php echo $cek['hp']?></td>
             	<td class="col-md-3"><?php echo $cek['alamat']?></td>
             	<td class="col-md-3"><?php echo $cek['email']?></td>
-            	<td class="col-md-3"><?php echo $cek['jumlah']?></td>
-            	<td class="col-md-3" ><?php echo $cek['date_in']?></td>	
-              <td class="col-md-3" ><?php echo $cek['date_out']?></td>
-              
- 				<td class="col-md-3"></th>
+              <td class="col-md-3"><?php echo $cek['jumlah']?></td>
+              <td class="col-md-3"><?php echo $cek['date_in']?></td>	
+              <td class="col-md-3"><?php echo $cek['date_out']?></td>  
+              <td class="col-md-3"><?php echo $cek['biaya']?></td>
             
 
             	</tr>
@@ -79,14 +80,16 @@
             		</tbody>
 				</table>
         	<br />
+          <form id="upload" action="<?php echo 'booking/'?>" method="POST" enctype="multipart/form-data" >
 
-<!--         	<div class="form-group">
 						<p class="help-block align-left">Upload Bukti Transfer</p>
 							<label for="exampleInputFile">File input</label>
-									<input type="file" id="exampleInputFile">
+									<input type="file" id="gambar">
+                  <br>
+                  <button class="btn  btn-sm pull-left" id="upload" type="button" name="upload" id="upload" >upload</button>
 									
-						</div> -->
 
+            </form>
 
 <!--   		<div class="upload_file">
            <div class="form-group">
@@ -109,7 +112,7 @@
                       </div>
              </div>	
  -->
-         <table class="table">
+<!--          <table class="table">
         <tr>
             <td>Title</td>
             <td><?php echo form_input('title'); ?></td>
@@ -122,7 +125,7 @@
             <td></td>
             <td><?php echo form_submit('submit', 'Save', 'class="btn btn-primary"'); ?></td>
         </tr>       
-        </table>
+        </table> -->
 
     	</div>
 
