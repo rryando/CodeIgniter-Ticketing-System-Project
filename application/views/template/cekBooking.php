@@ -80,16 +80,20 @@
             		</tbody>
 				</table>
         	<br />
-          <form id="upload" action="<?php echo 'booking/'?>" method="POST" enctype="multipart/form-data" >
+ 
+
+          <?php echo form_open_multipart('booking/uploadIMG')?>   
 
 						<p class="help-block align-left">Upload Bukti Transfer</p>
 							<label for="exampleInputFile">File input</label>
-									<input type="file" id="gambar">
+									<input type="file" id="gambar" name="image" />
                   <br>
-                  <button class="btn  btn-sm pull-left" id="upload" type="button" name="upload" id="upload" >upload</button>
-									
+                <!--   <input class="btn  btn-sm pull-left" id="upload" type="submit" placeholder="upload" name="upload" id="upload" /> -->
+                <input type="submit"   name="validate" class="btn btn-info pull-left"  value="Upload" id="upload"/>
 
-            </form>
+							</form>		
+
+            
 
 <!--   		<div class="upload_file">
            <div class="form-group">

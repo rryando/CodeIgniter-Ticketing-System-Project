@@ -4,7 +4,8 @@
 public function __construct(){
 
 		parent::__construct();
-		$this->load->helper('url');
+		//$this->load->helper('url');
+		$this->load->helper(array('form','url'));
 		$this->load->library('input');
 		//$this->load->view('template/index');
 		//$this->load->model('customer_model');
@@ -78,7 +79,7 @@ public function hitung(){
 }
 
 
-public function do_upload(){
+public function uploadIMG(){
 // 	echo " tes Upload ";
 
 // 	$type = explode('.', $_FILES["gambar"]["name"]);
@@ -91,38 +92,38 @@ public function do_upload(){
 // 		return "";
 // }
 
-	   $config['upload_path']   =   "imgUpload/";
- 
-       $config['allowed_types'] =   "gif|jpg|jpeg|png"; 
- 
-       $config['max_size']      =   "5000";
- 
-       $config['max_width']     =   "1907";
- 
-       $config['max_height']    =   "1280";
+	   $config['upload_path']   =   './imgUpload/';
+ 	   $config['allowed_types'] =   'gif|jpg|jpeg|png'; 
+ 	   $config['max_size']      =   '5000';
+ 	   $config['max_width']     =   '4000';
+ 	   $config['max_height']    =   '3000';
  
        $this->load->library('upload',$config);
+	   
 
-       if(!$this->upload->do_upload())
+       if( ! $this->upload->do_upload())
 
        {
 
-           echo $this->upload->display_errors();
+       	   $error = array('error' => $this->upload->display_errors());
+           $this->load->view('template/successUpload', $error);
 
        }
        else
 
        {
 
-           $finfo=$this->upload->data();
+     //       $finfo=$this->upload->data();
+		   // $this->_createThumbnail($finfo['file_name']);
+		   // $data['uploadInfo'] = $finfo;
+		   // $data['thumbnail_name'] = $finfo['raw_name']. '_thumb' .$finfo['file_ext']; 
+		   // $this->load->view('upload_success',$data);
 
-           $this->_createThumbnail($finfo['file_name']);
+       	$data = array('upload_data'=> $this->upload->data());
 
-           $data['uploadInfo'] = $finfo;
+       	$this->load->view('template/successUpload', $data);
 
-           $data['thumbnail_name'] = $finfo['raw_name']. '_thumb' .$finfo['file_ext']; 
 
-           $this->load->view('upload_success',$data);
 
            // You can view content of the $finfo with the code block below
 
@@ -133,6 +134,17 @@ public function do_upload(){
            echo '</pre>';*/
 
        }
+
+
+  //      if (!$this->upload->do_upload('image')) {
+		// 	$data = array('msg' => $this->upload->display_errors());
+
+		// } else { //else, set the success message
+		// 	$data = array('msg' => "Upload success!");
+      
+  //     $data['upload_data'] = $this->upload->data();
+
+		// }
 
 	}
 
