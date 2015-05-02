@@ -20,7 +20,8 @@ public function addBooking(){
 	//echo $data['hp'];
 	$data['email']=$this->input->post('email');
 	$data['jumlah']=$this->input->post('jumlah');
-	$data['date']=$this->input->post('date');
+	$data['date_in']=$this->input->post('datein');
+	$data['date_out']=$this->input->post('dateout');
 	//echo $data['nama'] ;
 	$this->customer_model->insert_booking($data);
 	redirect(site_url('login'));

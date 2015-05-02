@@ -47,7 +47,8 @@
                   <th class="col-md-3">alamat</th>
 				  <th class="col-md-3">email</th>
 				  <th class="col-md-3">jumlah orang</th>
-				  <th class="col-md-3">tanggal</th>
+				  <th class="col-md-3">tanggal masuk</th>
+          <th class="col-md-3">tanggal keluar</th>
 				  <th class="col-md-3">total biaya</th>
                 </tr>
               </thead>
@@ -61,7 +62,9 @@
             	<td class="col-md-3"><?php echo $cek['alamat']?></td>
             	<td class="col-md-3"><?php echo $cek['email']?></td>
             	<td class="col-md-3"><?php echo $cek['jumlah']?></td>
-            	<td class="col-md-3" ><?php echo $cek['date']?></td>	
+            	<td class="col-md-3" ><?php echo $cek['date_in']?></td>	
+              <td class="col-md-3" ><?php echo $cek['date_out']?></td>
+              
  				<td class="col-md-3"></th>
             
 
@@ -85,26 +88,42 @@
 						</div> -->
 
 
-  		<div class="upload_file">
+<!--   		<div class="upload_file">
            <div class="form-group">
                 <div class="col-md-6 column">
                      <div class="form-group">
-                             <!-- <label for="userfile"><h5>Attachment File Upload</h5></label> -->
+                             <label for="userfile"><h5>Attachment File Upload</h5></label>
                                   <br>
-                                      <!--  <label for="title">Title</label>
-                                       <input class="form-control" type="text" name="title" id="title" value="" placeholder="Attachment title"/> -->
+                                       <label for="title">Title</label>
+                                       <input class="form-control" type="text" name="title" id="title" value="" placeholder="Attachment title"/>
                                             </div>
                                         <input type="file" name="userfile" id="userfile" size="20" />
                                            <button class="btn btn-success btn-sm pull-right" id="upload" type="button" name="upload" id="upload" >upload</button>
                                            <br>
                               </div>
-   <!--                        <div class="col-md-6 column">
+                          <div class="col-md-6 column">
                           <label for="userfile"><h5>uploaded file</h5></label>
                           <div id="files"></div>
                                                   
-                            </div> -->
+                            </div>
                       </div>
-             </div>			
+             </div>	
+ -->
+         <table class="table">
+        <tr>
+            <td>Title</td>
+            <td><?php echo form_input('title'); ?></td>
+        </tr>
+        <tr>
+            <td>Image</td>
+            <td><?php echo form_upload('pic'); ?></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><?php echo form_submit('submit', 'Save', 'class="btn btn-primary"'); ?></td>
+        </tr>       
+        </table>
+
     	</div>
 
     </div>
