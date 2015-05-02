@@ -32,6 +32,9 @@
 		    	//$this->db->select()->get('customer',1)->where(array('id_customer=>$id')->result_array();
 		   }
 
+		  
+
+
 	}
 
 ?>

@@ -19,7 +19,7 @@
  	<div class="collapse navbar-collapse navbar-right navbar-main-collapse">
       <ul class="nav navbar-nav">
         <li class="active"><a href="<?php echo site_url('booking');?>">Home</a></li>
-        <li><a href="#about">About</a></li>
+        <!-- <li><a href="#about">About</a></li>
 		<li><a href="#contact">Contact</a></li>
 		<li><a href="#price">Price</a></li>
 		<li><a href="#gallery">Gallery</a></li>
@@ -32,7 +32,7 @@
 				<li><a href="#">Example menu</a></li> 
           </ul>
         </li>
-      </ul>
+      </ul> -->
      </div> 
 	<div class="container">
 		<div class="col-lg-10">
@@ -84,27 +84,27 @@
 									
 						</div> -->
 
-								<div class="upload_file">
-                                        <div class="form-group">
-                                            <div class="col-md-6 column">
-                                                <div class="form-group">
-                                                    <label for="userfile"><h5>Attachment File Upload</h5></label>
-                                                    <br>
-                                                    <label for="title">Title</label>
-                                                    <input class="form-control" type="text" name="title" id="title" value="" placeholder="Attachment title"/>
-                                                </div>
-                                                <input type="file" name="userfile" id="userfile" size="20" />
-                                                <button class="btn btn-success btn-sm pull-right" id="upload" type="button" name="upload" id="upload" >upload</button>
-                                                <br>
-                                            </div>
-                                            <div class="col-md-6 column">
-                                                <label for="userfile"><h5>uploaded file</h5></label>
-                                                <div id="files"></div>
-                                                
-                                            </div>
-                                         </div>
-                                    </div>			
 
+  		<div class="upload_file">
+           <div class="form-group">
+                <div class="col-md-6 column">
+                     <div class="form-group">
+                             <!-- <label for="userfile"><h5>Attachment File Upload</h5></label> -->
+                                  <br>
+                                      <!--  <label for="title">Title</label>
+                                       <input class="form-control" type="text" name="title" id="title" value="" placeholder="Attachment title"/> -->
+                                            </div>
+                                        <input type="file" name="userfile" id="userfile" size="20" />
+                                           <button class="btn btn-success btn-sm pull-right" id="upload" type="button" name="upload" id="upload" >upload</button>
+                                           <br>
+                              </div>
+   <!--                        <div class="col-md-6 column">
+                          <label for="userfile"><h5>uploaded file</h5></label>
+                          <div id="files"></div>
+                                                  
+                            </div> -->
+                      </div>
+             </div>			
     	</div>
 
     </div>
@@ -115,6 +115,69 @@
      
 
 </body>
-
+<!-- 
 <script src="<?=base_url('assets/js/jquery.ajaxfileupload.js'); ?>"></script>
+
+ <script >  
+    $('.formAddTicket').submit(function() {
+      var form = $(this);
+      form.children('button').prop('disabled', true);
+      $('#addSucess').hide();
+      $('#addError').hide();
+
+      var faction = '<?=site_url('mahasiswa/addTicket'); ?>'; //controller
+      var fdata = form.serialize();
+        
+
+      $.post(faction, fdata, function(rdata) {
+          var json = jQuery.parseJSON(rdata);
+          if (json.isSuccessful) {
+              $('#addSuccessMessage').html(json.message);
+              $('#addSuccess').show();
+              loadTable();
+              $('#addDormModal').modal('hide');
+          } else {
+              $('#addErrorMessage').html(json.message);
+              $('#addError').show();
+          }
+
+          form.children('button').prop('disabled', false);
+          form.children('input[name="name"]').select();
+      });
+          
+      return false;
+    });
+    
+	
+	// buat upload 
+	$('#upload').click(function(e) {
+		e.preventDefault();
+		$.ajaxFileUpload({
+			url 			:'./mahasiswa/upload_file/',  //controller 
+			secureuri		:false,
+			fileElementId	:'userfile',   //bebas
+			dataType		: 'json',
+			data			: {
+				'title'				: $('#title').val() //formupload gambar
+			},
+			success	: function (data, status)
+			{
+				if(data.status != 'error')
+				{
+					$('#files').html('<p>Reloading files...</p>');
+					refresh_files();
+					$('#title').val('');
+				}
+				alert(data.msg);
+                $('#upload').html('re-upload');
+			}
+		});
+		return false;
+	});
+    
+     
+    
+});
+</script>
+ -->
 </html>

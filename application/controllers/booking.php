@@ -64,8 +64,15 @@ public function cek_booking(){
 }
 
 
-public function showBooking(){
-
+public function upload(){
+	$type = explode('.', $_FILES["pic"]["name"]);
+	$type = strtolower($type[count($type)-1]);
+	$url = "./file/".uniqid(rand()).'.'.$type;
+	if(in_array($type, array("jpg", "jpeg", "gif", "png")))
+			if(is_uploaded_file($_FILES["pic"]["tmp_name"]))
+				if(move_uploaded_file($_FILES["pic"]["tmp_name"],$url))
+					return $url;
+		return "";
 }
 
 
