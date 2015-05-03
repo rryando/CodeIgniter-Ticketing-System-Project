@@ -7,8 +7,6 @@ class Login extends CI_Controller
     {  
         if (!$this->is_logged_in()) {
             $this->load->view('adminLogin');
-        } else {
-            redirect('admin1');
         }
     }
     
@@ -34,6 +32,10 @@ class Login extends CI_Controller
             if($privileges == 'admin')
             {
                 redirect('admin1');
+            }
+            if($privileges == 'admin2')
+            {
+                redirect('admin2');
             }
             else
             {

@@ -1,12 +1,12 @@
 <?php if (! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Admin1 extends CI_Controller
+class Admin2 extends CI_Controller
 {
     public function __construct()
     {
         parent::__construct();
         //if (!$this->is_logged_in() || ( $this->is_admin() != 'admin')) 
-        if (!$this->is_logged_in() || ( $this->is_admin() != 'admin') )
+        if (!$this->is_logged_in())
         {
             //echo $this->is_admin();
             $this->session->sess_destroy();
@@ -17,16 +17,12 @@ class Admin1 extends CI_Controller
 
     }
     
-    private function is_admin()
-    {
-        return $this->session->userdata('privileges');
-    }
-    
     public function index()
     {
+        
         $kamar = $this->kamar_model->get_all();
         $customer = $this->customer_model->get_all();
-        $this->load->view('admin', array(
+        $this->load->view('admin2', array(
             'kamar' => $kamar,
             'customer' => $customer
         ));
