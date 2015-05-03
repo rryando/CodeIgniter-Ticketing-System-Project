@@ -20,33 +20,31 @@
         <!--END message for showing error/sucess in adding room-->
 
         <!--BEGIN insertion room form-->
-        <form class="formAddKamar" role="form" accept-charset="utf-8">
+        <form id="formAddKamar" role="form" accept-charset="utf-8">
             <div class="form-group">
                  <label>Nomor kamar</label>
                  <input class="form-control" name="nomor" type="text" placeholder="Nomor kamar" />
             </div>
             <div class="form-group">
                  <label>Kapasitas kamar : </label>
-                 <label class="radio-inline"><input type="radio" name="kapasitas"> 1</label>
-                 <label class="radio-inline"><input type="radio" name="kapasitas"> 2</label>
-                 <label class="radio-inline"><input type="radio" name="kapasitas"> 3</label>
-                 <label class="radio-inline"><input type="radio" name="kapasitas"> 4</label>
+                 <label class="radio-inline"><input type="radio" name="kapasitas" value="1"> 1</label>
+                 <label class="radio-inline"><input type="radio" name="kapasitas" value="2"> 2</label>
+                 <label class="radio-inline"><input type="radio" name="kapasitas" value="3"> 3</label>
+                 <label class="radio-inline"><input type="radio" name="kapasitas" value="4"> 4</label>
             </div>
             <div class="form-group">
                  <label>harga Kamar</label>
                  <input class="form-control disabled" name="harga" type="text" placeholder="harga Kamar"/>
             </div>
-            <div class="form-group">
-                 <label>email customer</label>
-                 <input class="form-control" name="email" type="text" placeholder="email customer"/>
-            </div>
+
             <div class="form-group">
                  <label>status kamar</label>
                  <input class="form-control" name="status" type="text" placeholder="status kamar"/>
             </div>
 
-            <button type="submit" class="btn btn-success btn-large pull-right">Submit</button>
+            
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" id="formSubmit" class="btn btn-success btn-large pull-right">Submit</button>
         </form>
         <!--END insertion room form-->
       </div>
@@ -55,7 +53,7 @@
 </div>
 
 <script>
- $('.formAddKamar').submit(function() {
+$('#formAddKamar').submit(function() {
       var form = $(this);
       form.children('button').prop('disabled', true);
       $('#addSucess').hide();
@@ -69,6 +67,7 @@
           if (json.isSuccessful) {
               $('#addSuccessMessage').html(json.message);
               $('#addSuccess').show();
+              $('#addKamarModal').modal('hide');
               loadTable();
 
           } else {
@@ -79,6 +78,10 @@
           form.children('button').prop('disabled', false);
           form.children('input[name="name"]').select();
       });
+        return false;
     });
+    
+
 </script>
+
 <!--END Modal For Add Room-->

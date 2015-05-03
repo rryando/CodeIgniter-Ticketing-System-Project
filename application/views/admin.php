@@ -28,9 +28,6 @@
                     <li role="presentation" class="">
                         <a href="#assign" id="assign-tab" role="tab" data-toggle="tab" aria-controls="assign" aria-expanded="true">Manajemen Customer</a>
                     </li>
-                    <li role="presentation" class="">
-                        <a href="#pembayaran" id="pembayaran-tab" role="tab" data-toggle="tab" aria-controls="pembayaran" aria-expanded="false">Majemen Pembayaran</a>
-                    </li>
                 </ul>
             </div>
             
@@ -112,9 +109,8 @@
                                          <label>harga</label>
                                          <input class="form-control" name="harga" type="text" placeholder="harga kamar" value="<?=$row['harga']; ?>"/>       
                                     </div>
-                                    <div class="form-group">
-                                         <label>email</label>
-                                         <input class="form-control" name="email" type="text" placeholder="email user" value="<?=$row['email']; ?>"/>       
+                                    <div class="form-group" id="getEmail<?=$row['id_kamar']; ?>">
+   
                                     </div>
                                     <!-- edit for room procesing, dont delete
                                     <div class="form-group">
@@ -204,6 +200,11 @@
                                          <label>ID Customer</label>
                                          <input class="form-control hidden" type="text" name="id_customer" value="<?=$cust['id_customer']; ?>" />
                                     </div>
+                                    
+                                    <div class="form-group">
+                                         <label>harga</label>
+                                         <input class="form-control" name="harga" type="text" placeholder="harga kamar"/>       
+                                    </div>
                                     <label>Status Customer</label>
                                             <select class="form-control" name="status">
                                                 <option></option>
@@ -279,7 +280,15 @@ $("#refreshData").click(function(e) {
     loadTable();
 });
 
-
+function get_email(x,y)
+    {
+        $.get('./admin1/get_email/'+x)
+        .success(function (data){
+        $('#getEmail'+y).html(data);
+    });
+    }
+    
+    
 function Delete(x)
 {
     var confMsg =  confirm("apakah kamu yakin ingin menghapus data ini ?");
@@ -328,7 +337,7 @@ function loadTable()
                 row+='<td>'+e+'</td>';
            })
            
-            row+='<td><button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#editKamarModal'+d['id_kamar']+'" >PROSES</button> <button class="btn btn-sm btn-danger delete" name="id_kamar" value="'+d['id_kamar']+'" onclick="return Delete('+d['id_kamar']+')">HAPUS</button></td>';
+            row+='<td><button class="btn btn-sm btn-warning" id="tombolproses" data-toggle="modal" data-target="#editKamarModal'+d['id_kamar']+'" onclick="return get_email('+d['kapasitas']+','+d['id_kamar']+')">PROSES</button> <button class="btn btn-sm btn-danger delete" name="id_kamar" value="'+d['id_kamar']+'" onclick="return Delete('+d['id_kamar']+')">HAPUS</button></td>';
 
            row+='</tr>';
            $('#roomTable tbody').append(row);
@@ -367,6 +376,7 @@ $(document).ready(function() {
         format: 'yyyy-mm-dd'
     });
     
+    get_email();
     loadTable();
     
     
@@ -430,7 +440,6 @@ $(document).ready(function() {
 
       return false;
     });
-    
 
     $('.content').fadeIn(1000);
 });

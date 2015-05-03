@@ -39,6 +39,13 @@ class Admin1 extends CI_Controller
          echo json_encode(array('customer'=>$this->customer_model->get_all()));
     }
     
+    public function get_email($kapasitas)
+    {
+        $email = $this->customer_model->get_email($kapasitas);
+        $this->load->view('includes/getEmail',array('email'=>$email));
+         
+    }
+    
     private function is_logged_in()
     {
         return $this->session->userdata('is_logged_in');
@@ -51,7 +58,6 @@ class Admin1 extends CI_Controller
         $this->form_validation->set_rules('nomor', 'nomor', 'required|max_length[3]|numeric');
         $this->form_validation->set_rules('kapasitas', 'kapasitas', 'required|max_length[3]|numeric');
         $this->form_validation->set_rules('harga', 'harga', 'required|max_length[32]|numeric');
-        $this->form_validation->set_rules('email', 'email', 'max_length[32]|alpha_numeric');
         $this->form_validation->set_rules('status', 'status', 'max_length[32]|alpha_numeric');
         
         if ($this->form_validation->run() == FALSE) 
@@ -65,7 +71,6 @@ class Admin1 extends CI_Controller
                 $this->input->post('nomor'), 
                 $this->input->post('kapasitas'), 
                 $this->input->post('harga'),
-                $this->input->post('email'),
                 $this->input->post('status')
             );
             
@@ -127,6 +132,7 @@ class Admin1 extends CI_Controller
 
         $this->load->library('form_validation');
         $this->form_validation->set_rules('id_customer', 'id_customer', 'max_length[255]');
+        $this->form_validation->set_rules('harga', 'harga', 'max_length[255]');
         $this->form_validation->set_rules('status', 'status', 'max_length[255]');
 
         
@@ -139,6 +145,7 @@ class Admin1 extends CI_Controller
         {
             $is_updated = $this->customer_model->update(
                 $this->input->post('id_customer'), 
+                $this->input->post('harga'),
                 $this->input->post('status')
                 
             );

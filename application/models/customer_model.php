@@ -24,16 +24,24 @@
                 ->result_array();
         }
         
+        public function get_email($jumlah){
+            return $this->db->select('email')
+                ->order_by('id_customer')
+                ->get_where('customer',array('jumlah'=>$jumlah))
+                ->result_array();
+        }
+        
         public function delete($id_customer)
         {
             $this->db->where('id_customer',$id_customer);
             $this->db->delete('customer');
         }
         
-        public function update($id_customer,$status)
+        public function update($id_customer,$pembayaran, $status)
         {
             
         $customer = array(
+            'biaya' => $pembayaran,
             'status' => $status
         );
         

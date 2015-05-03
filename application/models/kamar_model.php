@@ -24,13 +24,12 @@ class Kamar_model extends CI_Model
             ->result_array();
     }
     
-    public function add($nomor,$kapasitas,$harga,$email,$status)
+    public function add($nomor,$kapasitas,$harga,$status)
     {        
         $this->db->insert('kamar', array(
                 'nomor' => $nomor,
                 'kapasitas'=>$kapasitas,
                 'harga'=>$harga,
-                'email'=>$email,
                 'status'=>$status
             )
         ); 
