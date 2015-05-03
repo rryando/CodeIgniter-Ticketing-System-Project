@@ -16,7 +16,28 @@
 
 		}
 
-		 function select_by_id ($id){
+        public function get_all()
+        {
+            return $this->db->select('*')
+                ->order_by('id_customer')
+                ->get('customer')
+                ->result_array();
+        }
+        
+        public function update($id_customer,$status)
+        {
+            
+        $customer = array(
+            'status' => $status
+        );
+        
+        $this->db->where('id_customer',$id_customer)
+                ->update('customer', $customer);
+        
+        return TRUE;
+        }
+        
+        function select_by_id ($id){
 		   // return $this->db->select('*')->from('customer')->where('id_customer',$id)->limit(1)->result();
 				
 

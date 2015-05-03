@@ -1,6 +1,5 @@
 <? $this->load->view('includes/header');?>
 <a href="#" class="glyphicon glyphicon-th-list toogleside pull-right" id="menu-toggle"></a>
-<h3 class="text-center wuaso">Sistem Manajemen Ticket</h3>
 <div class="container">
     
     <div class="content" style="display:none">
@@ -22,6 +21,16 @@
                     <li>
                         <a class="text-danger" style="color:#BA1919;" href="<?=site_url('login/logout'); ?>">Logout</a>
                     </li>
+                    
+                    <li role="presentation" class="active"> 
+                        <a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Manajemen Kamar</a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="#assign" id="assign-tab" role="tab" data-toggle="tab" aria-controls="assign" aria-expanded="true">Manajemen Customer</a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="#pembayaran" id="pembayaran-tab" role="tab" data-toggle="tab" aria-controls="pembayaran" aria-expanded="false">Majemen Pembayaran</a>
+                    </li>
                 </ul>
             </div>
             
@@ -31,11 +40,10 @@
             
             <div id="showdata"></div>
                 <br>
-            <h4 class="text-center headercoeg">Sistem Informasi Manajemen Tiket</h4>
+            <h4 class="text-center headercoeg">Sistem Administrasi Kamar</h4>
             <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
-                <ul id="myTab" class="nav nav-tabs" role="tablist">
-                  <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Manajemen Ticket</a></li>
 
+<a href="#" class="glyphicon glyphicon-refresh pull-right" style="font-weight:800;font-size:20px;font-face:'Montserrat',sans-serif;" id="refreshData"></a>
                   <!--
                     <li role="presentation" class="dropdown">
                     <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown" aria-controls="myTabDrop1-contents" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -45,10 +53,11 @@
                     </ul>
                   </li>
 -->
-                </ul>
+
                 <div id="myTabContent" class="tab-content">
                   <div role="tabpanel" class="tab-pane fade active in" id="home" aria-labelledby="home-tab">
-<h4 class="text-center">Data Tiket Yang Telah Di-apply</h4>
+                      <h2 class="text-center">Manajemen Kamar</h2>
+<h4 class="text-center">Data Kamar Yang Telah Di-apply</h4>
                      <table id="roomTable" class="table table-hover table-striped table-condensed"> 
                         <thead style="background-color:#FF6666;"> 
                         <tr> 
@@ -63,7 +72,7 @@
                         <tbody> 
                         <? foreach($kamar as $row): ?>
                     <!--BEGIN Modal For Edit Ticket-->
-                        <div class="modal fade" id="editKamarModal<?=$row['id_kamar']; ?>" tabindex="-1" role="dialog" aria-labelledby="editTicketModal" aria-hidden="true">
+                        <div class="modal fade" id="editKamarModal<?=$row['id_kamar']; ?>" tabindex="-1" role="dialog" aria-labelledby="editKamarModal" aria-hidden="true">
                           <div class="modal-dialog">
                             <div class="modal-content">
                               <div class="modal-header">
@@ -71,7 +80,7 @@
                                 <h4 class="modal-title" id="myModalLabel">Edit Kamar ID : <?=$row['id_kamar']; ?></h4>
                               </div>
                               <div class="modal-body">
-                                  <div class="container-fluid">
+                                <div class="container-fluid">
                                 <!--BEGIN message for showing error/sucess in editing ticket-->
                                 <div id="editSuccess" class="row" style="display: none">
                                       <div id="editSuccessMessage" class="alert alert-info text-center"></div>
@@ -88,11 +97,11 @@
                                          <input class="form-control hidden" type="text" name="id_kamar" placeholder="id kamar" value="<?=$row['id_kamar']; ?>" />
                                     </div>
                                     <div class="form-group">
-                                         <label>nomor Ticket</label>
+                                         <label>nomor</label>
                                          <input class="form-control" name="nomor" type="text" placeholder="nomor kamar" value="<?=$row['nomor']; ?>" />
                                     </div>
                                     <div class="form-group">
-                                         <label>kapasitas Ticket</label>
+                                         <label>kapasitas</label>
                                          <input class="form-control" name="kapasitas" type="text" placeholder="kapasitas kamar" value="<?=$row['kapasitas']; ?>"/>
                                     </div>
                                     <div class="form-group">
@@ -143,12 +152,106 @@
                     </table> 
                   </div>
 
-              </div>
-                
-           
+              
+                <div role="tabpanel" class="tab-pane fade" id="assign" aria-labelledby="assign-tab">
+                    <h2 class="text-center">Manajemen Customer</h2>
+                    <table id="customerTable" class="table table-hover table-striped table-condensed"> 
+                        <thead style="background-color:#FF6666;"> 
+                        <tr> 
+                            <th>ID</th> 
+                            <th>Nama</th> 
+                            <th>No_identitas</th> 
+                            <th>HP</th> 
+                            <th>Alamat</th> 
+                            <th>Email</th>
+                            <th>Jumlah</th>
+                            <th>Date in</th>
+                            <th>Date out</th>
+                            <th>Gambar</th>
+                            <th>Biaya</th>
+                            <th>Kamar</th>
+                            <th>Status</th>
+                            <th>Tool</th>
+                        </tr> 
+                        </thead>
+                        <tbody>
+                        <? foreach($customer as $cust): ?>
+                        <div class="modal fade" id="editCustomerModal<?=$cust['id_customer']; ?>" tabindex="-1" role="dialog" aria-labelledby="editCustomerModal" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Edit Customer ID : <?=$cust['id_customer']; ?></h4>
+                              </div>
+                              <div class="modal-body">
+                                  <div class="container-fluid">
+                                <!--BEGIN message for showing error/sucess in editing ticket-->
+                                <div id="editSuccess" class="row" style="display: none">
+                                      <div id="editCustSuccessMessage" class="alert alert-info text-center"></div>
+                                </div>
+                                <div id="editError" class="row" style="display: none">
+                                      <div id="editCustErrorMessage" class="alert alert-danger text-center"></div>
+                                </div>
+                                <!--END message for showing error/sucess in editing ticket-->
+
+                                <!--BEGIN EDIT ticket form-->
+                                <form class="formEditCustomer" role="form" accept-charset="utf-8">
+                                    <div class="form-group hidden">
+                                         <label>ID Customer</label>
+                                         <input class="form-control hidden" type="text" name="id_customer" value="<?=$cust['id_customer']; ?>" />
+                                    </div>
+                                    <label>Status Customer</label>
+                                            <select class="form-control" name="status">
+                                                <option></option>
+                                                <option value="Lunas">Lunas</option>
+                                                <option value="Belum Lunas">Belum Lunas</option>
+                                            </select>
+                                    <!-- edit for room procesing, dont delete
+                                    <div class="form-group">
+                                        <div class="col-md-6 column">
+                                            <label>Status Tiket</label>
+                                            <select class="form-control" name="Status">
+                                                <option></option>
+                                                <option value="Diterima">Diterima</option>
+                                                <option value="Ditolak">Ditolak</option>
+                                            </select>
+                                      </div>  
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-6 column">
+                                            <label>Tanggal Expired</label>
+                                            <input class="form-control datepicker" type="text" name="Expired" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+
+                                      <label>Pesan</label>
+                                      <textarea class="form-control" rows="2" name="Pesan"></textarea>
+                                   
+                                    </div>
+                                
+                                    <br>
+                                -->
+                                <button type="submit" id="formSubmit" class="btn btn-success btn-large pull-right">Submit</button>
+                                </form>
+                                <!--END EDIT Ticket form-->
+                              </div>
+                               </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!--END Modal For EDIT Ticket-->
+                    <? endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="pembayaran" aria-labelledby="pembayaran-tab">
+                    <h2 class="text-center">Manajemen pembayaran</h2>    
+                </div>
                 
                 
             </div>
+                </div>
         </div>
     </div>
         
@@ -162,6 +265,15 @@
     $("#wrapper").toggleClass("toggled");
 });
     
+$('#myTab a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+$("#refreshData").click(function(e) {
+    e.preventDefault();
+    loadTable();
+    loadCustTable();
+});
 
 
 function Delete(x)
@@ -178,6 +290,11 @@ function Delete(x)
         console.log('b');
     }
     loadTable();
+};
+    
+function DeleteCust(x)
+{
+   
 };
     
 function loadTable()
@@ -204,6 +321,31 @@ function loadTable()
         })
     }); 
 };
+    
+function loadCustTable()
+{
+    $('#customerTable tbody').fadeOut(200).empty();
+    var url = '<?=site_url("admin1/getCustomerData"); ?>';
+    $.get(url, function(data){
+        var customerData = jQuery.parseJSON(data);
+        var data = customerData['customer'];
+        $.each(customerData['customer'], function (i,d) {
+
+            var row='<tr class="danger">';
+            row+='<tr class="danger">';
+           
+           $.each(d, function(j, e) {
+                row+='<td>'+e+'</td>';
+           })
+           
+            row+='<td><button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#editCustomerModal'+d['id_customer']+'" >PROSES</button> <button class="btn btn-sm btn-danger delete" name="id_customer" value="'+d['id_customer']+'" onclick="return DeleteCust('+d['id_customer']+')">HAPUS</button></td>';
+
+           row+='</tr>';
+           $('#customerTable tbody').fadeIn(1000).append(row);
+
+        })
+    }); 
+};
     /*
     */
 $(document).ready(function() {
@@ -211,34 +353,34 @@ $(document).ready(function() {
         format: 'yyyy-mm-dd'
     });
     
-   loadTable();
+    loadTable();
+    loadCustTable();
+    
     
     
     /* getting table data with json*/
     
     /*END getting table data with json*/
-    /*
-    $('#formAdd').submit(function() {
+    
+    $('.formEditCustomer').submit(function() {
       var form = $(this);
       form.children('button').prop('disabled', true);
       $('#addSucess').hide();
       $('#addError').hide();
 
-      var faction = '<?=site_url('admingrace/addRoom'); ?>';
+      var faction = '<?=site_url('admin1/editCustomer'); ?>';
       var fdata = form.serialize();
-        var notif = '<?=site_url('admingrace/addRoom'); ?>';
 
       $.post(faction, fdata, function(rdata) {
           var json = jQuery.parseJSON(rdata);
           if (json.isSuccessful) {
-              $('#addSuccessMessage').html(json.message);
-              $('#addSuccess').show();
-              $('#addDormModal').modal('hide');
-              loadTable();
+              $('#editCustSuccessMessage').html(json.message);
+              $('#editCustSuccess').show();
+              loadCustTable();
 
           } else {
-              $('#addErrorMessage').html(json.message);
-              $('#addError').show();
+              $('#editCustErrorMessage').html(json.message);
+              $('#editCustError').show();
           }
 
           form.children('button').prop('disabled', false);
@@ -254,7 +396,7 @@ $(document).ready(function() {
       $('#editSucess').hide();
       $('#editError').hide();
 
-      var faction = '<?=site_url('admingrace/editTicket'); ?>';
+      var faction = '<?=site_url('admin1/editKamar'); ?>';
       var fdata = form.serialize();
 
       $.post(faction, fdata, function(rdata) {
@@ -262,7 +404,7 @@ $(document).ready(function() {
           if (json.isSuccessful) {
               $('#editSuccessMessage').html(json.message);
               $('#editSuccess').show();
-              $('#editTicketModal').modal('hide');
+              $('#editKamarModal').modal('hide');
               loadTable();
 
           } else {
@@ -276,7 +418,7 @@ $(document).ready(function() {
 
       return false;
     });
-    */
+    
 
     $('.content').fadeIn(1000);
 });

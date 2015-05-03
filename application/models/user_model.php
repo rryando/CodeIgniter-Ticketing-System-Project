@@ -6,13 +6,21 @@ class User_model extends CI_Model {
         parent::__construct();
     }
 
-    public function get_all($id)
+    public function get_by_id($id)
     {
         $users = $this->db
             ->get_where('user', array('id' => $id))
             ->result_array();
 
         return $users;
+    }
+    
+    public function get_all()
+    {
+        return $this->db->select('*')
+            ->order_by('id')
+            ->get('user')
+            ->result_array();
     }
 
     public function get_id($username)
