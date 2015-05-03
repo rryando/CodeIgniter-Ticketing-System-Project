@@ -35,6 +35,7 @@ class Admin1 extends CI_Controller
     */
     
     public function getCustomerData(){
+
          echo json_encode(array('customer'=>$this->customer_model->get_all()));
     }
     
@@ -42,6 +43,45 @@ class Admin1 extends CI_Controller
     {
         return $this->session->userdata('is_logged_in');
     }
+    
+    public function addKamar()
+    {
+        sleep(1);
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('nomor', 'nomor', 'required|max_length[3]|numeric');
+        $this->form_validation->set_rules('kapasitas', 'kapasitas', 'required|max_length[3]|numeric');
+        $this->form_validation->set_rules('harga', 'harga', 'required|max_length[32]|numeric');
+        $this->form_validation->set_rules('email', 'email', 'max_length[32]|alpha_numeric');
+        $this->form_validation->set_rules('status', 'status', 'max_length[32]|alpha_numeric');
+        
+        if ($this->form_validation->run() == FALSE) 
+        {
+            $message = "<strong>Adding</strong> failed!";
+            $this->json_response(FALSE, $message);
+        } 
+        else 
+        {
+            $is_added = $this->kamar_model->add(
+                $this->input->post('nomor'), 
+                $this->input->post('kapasitas'), 
+                $this->input->post('harga'),
+                $this->input->post('email'),
+                $this->input->post('status')
+            );
+            
+            if ($is_added) 
+            {
+                $message = "Kamar Nomor : <strong> ".$this->input->post('Nomor')."</strong> berhasil ditambahkan !";
+                $this->json_response(TRUE, $message);
+            } 
+            else 
+            {
+                $message = "Kamar Nomor : <strong> ".$this->input->post('Nomor')."</strong> sudah ada !";
+                $this->json_response(FALSE, $message);
+            }
+        }
+    }
+    
     
     public function editKamar()
     {
@@ -84,7 +124,7 @@ class Admin1 extends CI_Controller
     }
     
     public function editCustomer(){
-        sleep(1);
+
         $this->load->library('form_validation');
         $this->form_validation->set_rules('id_customer', 'id_customer', 'max_length[255]');
         $this->form_validation->set_rules('status', 'status', 'max_length[255]');
@@ -120,12 +160,19 @@ class Admin1 extends CI_Controller
     
     public function deleteKamar($id_kamar)
     {
-        sleep(1);
+
         $this->kamar_model->delete($id_kamar);
+    }
+    
+    public function deleteCust($id_customer)
+    {
+
+        $this->customer_model->delete($id_customer);
     }
     
     public function getKamarData()
     {
+
         echo json_encode(array('kamar'=>$this->kamar_model->get_all()));
     }
  

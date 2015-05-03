@@ -58,6 +58,9 @@
                   <div role="tabpanel" class="tab-pane fade active in" id="home" aria-labelledby="home-tab">
                       <h2 class="text-center">Manajemen Kamar</h2>
 <h4 class="text-center">Data Kamar Yang Telah Di-apply</h4>
+
+                      <? $this->load->view('includes/modalAddKamar'); ?>
+                      <br>
                      <table id="roomTable" class="table table-hover table-striped table-condensed"> 
                         <thead style="background-color:#FF6666;"> 
                         <tr> 
@@ -66,6 +69,7 @@
                             <th>Kapasitas</th> 
                             <th>Harga</th> 
                             <th>Email</th> 
+                            <th>Status</th> 
                             <th>Tool</th>
                         </tr> 
                         </thead> 
@@ -269,10 +273,10 @@ $('#myTab a').click(function (e) {
   e.preventDefault()
   $(this).tab('show')
 })
+
 $("#refreshData").click(function(e) {
     e.preventDefault();
     loadTable();
-    loadCustTable();
 });
 
 
@@ -294,12 +298,23 @@ function Delete(x)
     
 function DeleteCust(x)
 {
-   
+    var confMsg =  confirm("apakah kamu yakin ingin menghapus data ini ?");
+    var deleteURL = '<?=site_url("admin1/deleteCust"); ?>'+'/'+x;
+     if (confMsg == true)
+     {
+         console.log(deleteURL);
+         $.post(deleteURL);
+     }
+    else
+    {
+        console.log('b');
+    }
+    loadTable();
 };
     
 function loadTable()
 {
-    $('#roomTable tbody').fadeOut(200).empty();
+    $('#roomTable tbody').empty();
     var url = '<?=site_url("admin1/getKamarData"); ?>';
     $.get(url, function(data){
         var kamarData = jQuery.parseJSON(data);
@@ -316,15 +331,12 @@ function loadTable()
             row+='<td><button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#editKamarModal'+d['id_kamar']+'" >PROSES</button> <button class="btn btn-sm btn-danger delete" name="id_kamar" value="'+d['id_kamar']+'" onclick="return Delete('+d['id_kamar']+')">HAPUS</button></td>';
 
            row+='</tr>';
-           $('#roomTable tbody').fadeIn(1000).append(row);
+           $('#roomTable tbody').append(row);
 
         })
     }); 
-};
     
-function loadCustTable()
-{
-    $('#customerTable tbody').fadeOut(200).empty();
+    $('#customerTable tbody').empty();
     var url = '<?=site_url("admin1/getCustomerData"); ?>';
     $.get(url, function(data){
         var customerData = jQuery.parseJSON(data);
@@ -341,11 +353,13 @@ function loadCustTable()
             row+='<td><button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#editCustomerModal'+d['id_customer']+'" >PROSES</button> <button class="btn btn-sm btn-danger delete" name="id_customer" value="'+d['id_customer']+'" onclick="return DeleteCust('+d['id_customer']+')">HAPUS</button></td>';
 
            row+='</tr>';
-           $('#customerTable tbody').fadeIn(1000).append(row);
+           $('#customerTable tbody').append(row);
 
         })
-    }); 
+    });
 };
+    
+
     /*
     */
 $(document).ready(function() {
@@ -354,8 +368,6 @@ $(document).ready(function() {
     });
     
     loadTable();
-    loadCustTable();
-    
     
     
     /* getting table data with json*/
@@ -376,7 +388,7 @@ $(document).ready(function() {
           if (json.isSuccessful) {
               $('#editCustSuccessMessage').html(json.message);
               $('#editCustSuccess').show();
-              loadCustTable();
+              loadTable();
 
           } else {
               $('#editCustErrorMessage').html(json.message);

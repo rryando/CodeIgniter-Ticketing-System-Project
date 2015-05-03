@@ -24,6 +24,12 @@
                 ->result_array();
         }
         
+        public function delete($id_customer)
+        {
+            $this->db->where('id_customer',$id_customer);
+            $this->db->delete('customer');
+        }
+        
         public function update($id_customer,$status)
         {
             

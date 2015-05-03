@@ -23,6 +23,19 @@ class Kamar_model extends CI_Model
             ->get('kamar')
             ->result_array();
     }
+    
+    public function add($nomor,$kapasitas,$harga,$email,$status)
+    {        
+        $this->db->insert('kamar', array(
+                'nomor' => $nomor,
+                'kapasitas'=>$kapasitas,
+                'harga'=>$harga,
+                'email'=>$email,
+                'status'=>$status
+            )
+        ); 
+        return TRUE;
+    }
 
 /*
     public function get_by_user($userid)
