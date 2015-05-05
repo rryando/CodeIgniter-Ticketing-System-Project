@@ -53,19 +53,30 @@ class Kamar_model extends CI_Model
         $this->db->delete('kamar');
     }
 
-    public function update($id_kamar,$nomor,$kapasitas,$harga,$email)
+    public function update($id_kamar,$nomor,$kapasitas,$harga,$email,$status)
     {
         $kamar = array(
             'nomor' => $nomor, 
             'kapasitas' => $kapasitas, 
             'harga' => $harga,
-            'email' => $email
+            'email' => $email,
+            'status' => $status
         );
         
         $this->db->where('id_kamar',$id_kamar)
                 ->update('kamar', $kamar);
         
         return TRUE;
+    }
+    
+    public function get_by_payment()
+    {
+        return $this->db->select('kamar.id_kamar,kamar.nomor,kamar.kapasitas, kamar.harga,kamar.email,kamar.status,customer.status_kamar')
+            ->from('kamar')
+            ->join('customer','kamar.email=customer.email','left')
+            ->get()
+            ->result_array();
+            
     }
     
     

@@ -63,7 +63,8 @@ class Admin1 extends CI_Controller
         $this->form_validation->set_rules('nomor', 'nomor', 'required|max_length[3]|numeric');
         $this->form_validation->set_rules('kapasitas', 'kapasitas', 'required|max_length[3]|numeric');
         $this->form_validation->set_rules('harga', 'harga', 'required|max_length[32]|numeric');
-        $this->form_validation->set_rules('status', 'status', 'max_length[32]|alpha_numeric');
+        
+        $status = 'Kosong';
         
         if ($this->form_validation->run() == FALSE) 
         {
@@ -76,7 +77,7 @@ class Admin1 extends CI_Controller
                 $this->input->post('nomor'), 
                 $this->input->post('kapasitas'), 
                 $this->input->post('harga'),
-                $this->input->post('status')
+                $status
             );
             
             if ($is_added) 
@@ -102,6 +103,7 @@ class Admin1 extends CI_Controller
         $this->form_validation->set_rules('kapasitas', 'kapasitas', 'max_length[255]');
         $this->form_validation->set_rules('harga', 'harga', 'max_length[255]');
         $this->form_validation->set_rules('email', 'email', 'max_length[255]');
+        $this->form_validation->set_rules('status', 'status', 'max_length[255]');
 
         
         if ($this->form_validation->run() == FALSE) 
@@ -116,7 +118,8 @@ class Admin1 extends CI_Controller
                 $this->input->post('nomor'), 
                 $this->input->post('kapasitas'), 
                 $this->input->post('harga'),
-                $this->input->post('email')
+                $this->input->post('email'),
+                $this->input->post('status')
                 
             );
             
@@ -185,7 +188,7 @@ class Admin1 extends CI_Controller
     public function getKamarData()
     {
 
-        echo json_encode(array('kamar'=>$this->kamar_model->get_all()));
+        echo json_encode(array('kamar'=>$this->kamar_model->get_by_payment()));
     }
  
     private function json_response($successful, $message){

@@ -67,6 +67,7 @@
                             <th>Harga</th> 
                             <th>Email</th> 
                             <th>Status</th> 
+                            <th>Pembayaran</th>
                             <th>Tool</th>
                         </tr> 
                         </thead> 
@@ -92,37 +93,47 @@
                                 <!--END message for showing error/sucess in editing ticket-->
 
                                 <!--BEGIN EDIT ticket form-->
-                                <form class="formEdit" role="form" accept-charset="utf-8">
+                                <form class="formEdit form-horizontal" role="form" accept-charset="utf-8">
                                     <div class="form-group hidden">
-                                         <label>ID kamar</label>
+                                         <label>ID kamar : </label>
                                          <input class="form-control hidden" type="text" name="id_kamar" placeholder="id kamar" value="<?=$row['id_kamar']; ?>" />
                                     </div>
-                                    <div class="form-group">
-                                         <label>nomor</label>
-                                         <input class="form-control" name="nomor" type="text" placeholder="nomor kamar" value="<?=$row['nomor']; ?>" />
+                                    <br>
+                                    <div class="form-group ">
+                                         <label class="col-sm-2 control-label">Nomor </label>
+                                        <div class="col-sm-10">
+                                            <input class="form-control form-inline" name="nomor" type="text" placeholder="nomor kamar" value="<?=$row['nomor']; ?>" /></div>
                                     </div>
+                                    <br>
                                     <div class="form-group">
-                                         <label>kapasitas</label>
-                                         <input class="form-control" name="kapasitas" type="text" placeholder="kapasitas kamar" value="<?=$row['kapasitas']; ?>"/>
+                                         <label class="col-sm-2 control-label">Kapasitas </label><div class="col-sm-10">
+                                        <input class="form-control form-inline" name="kapasitas" type="text" placeholder="kapasitas kamar" value="<?=$row['kapasitas']; ?>"/></div>
                                     </div>
+                                    <br>
                                     <div class="form-group">
-                                         <label>harga</label>
-                                         <input class="form-control" name="harga" type="text" placeholder="harga kamar" value="<?=$row['harga']; ?>"/>       
+                                         <label class="col-sm-2 control-label">Harga </label>
+                                        <div class="col-sm-10">
+                                            <input class="form-control form-inline" name="harga" type="number" placeholder="harga kamar" value="<?=$row['harga']; ?>"/>       </div>
                                     </div>
-                                    <div class="form-group" id="getEmail<?=$row['id_kamar']; ?>">
-   
-                                    </div>
-                                    <!-- edit for room procesing, dont delete
+                                    <br>
                                     <div class="form-group">
-                                        <div class="col-md-6 column">
-                                            <label>Status Tiket</label>
-                                            <select class="form-control" name="Status">
+                                    <label class="col-sm-2 control-label">Email </label>
+                                        <div class="col-sm-10">
+                                    <select class="form-control form-inline" name="email" id="getEmail<?=$row['id_kamar']; ?>">
+                                   
+                                    </select>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                            <label class="col-sm-2 control-label">Status Tiket</label><div class="col-sm-10">
+                                            <select class="form-control form-inline" name="status">
                                                 <option></option>
-                                                <option value="Diterima">Diterima</option>
-                                                <option value="Ditolak">Ditolak</option>
-                                            </select>
+                                                <option value="Dibooking">Dibooking</option>
+                                                <option value="Kosong">kosong</option>
+                                                </select></select>
                                       </div>  
-                                    </div>
+                                    <!-- edit for room procesing, dont delete
                                     <div class="form-group">
                                         <div class="col-md-6 column">
                                             <label>Tanggal Expired</label>

@@ -23,7 +23,7 @@
         <form id="formAddKamar" role="form" accept-charset="utf-8">
             <div class="form-group">
                  <label>Nomor kamar</label>
-                 <input class="form-control" name="nomor" type="text" placeholder="Nomor kamar" />
+                 <input class="form-control" name="nomor" type="number" placeholder="Nomor kamar" required/>
             </div>
             <div class="form-group">
                  <label>Kapasitas kamar : </label>
@@ -34,15 +34,14 @@
             </div>
             <div class="form-group">
                  <label>harga Kamar</label>
-                 <input class="form-control disabled" name="harga" type="text" placeholder="harga Kamar"/>
+                 <input class="form-control disabled" name="harga" type="number" placeholder="harga Kamar" required/>
             </div>
 
             <div class="form-group">
                  <label>status kamar</label>
-                 <input class="form-control" name="status" type="text" placeholder="status kamar"/>
+                 <input class="form-control"  name="status" type="text" placeholder="status kamar" value="kosong" disabled/>
             </div>
 
-            
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             <button type="submit" id="formSubmit" class="btn btn-success btn-large pull-right">Submit</button>
         </form>
