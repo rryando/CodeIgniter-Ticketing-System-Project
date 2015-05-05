@@ -66,6 +66,7 @@
                             <th>Harga</th> 
                             <th>Email</th> 
                             <th>Status</th> 
+                            <th>Pembayaran</th>
 
                         </tr> 
                         </thead> 

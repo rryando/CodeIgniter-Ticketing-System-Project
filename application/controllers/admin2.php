@@ -181,7 +181,7 @@ class Admin2 extends CI_Controller
     public function getKamarData()
     {
 
-        echo json_encode(array('kamar'=>$this->kamar_model->get_all()));
+        echo json_encode(array('kamar'=>$this->kamar_model->get_by_payment()));
     }
  
     private function json_response($successful, $message){

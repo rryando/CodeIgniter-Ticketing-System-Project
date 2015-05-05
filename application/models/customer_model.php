@@ -42,7 +42,7 @@
             
         $customer = array(
             'biaya' => $pembayaran,
-            'status' => $status
+            'status_kamar' => $status
         );
         
         $this->db->where('id_customer',$id_customer)

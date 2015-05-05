@@ -131,8 +131,10 @@
                                                 <option></option>
                                                 <option value="Dibooking">Dibooking</option>
                                                 <option value="Kosong">kosong</option>
-                                                </select></select>
-                                      </div>  
+                                                
+                                        </select>
+                                      </div> 
+                                    </div>
                                     <!-- edit for room procesing, dont delete
                                     <div class="form-group">
                                         <div class="col-md-6 column">
@@ -291,11 +293,11 @@ $("#refreshData").click(function(e) {
     loadTable();
 });
 
-function get_email(x,y)
+function get_email(kapasitas,id_kamar)
     {
-        $.get('./admin1/get_email/'+x)
+        $.get('./admin1/get_email/'+kapasitas)
         .success(function (data){
-        $('#getEmail'+y).html(data);
+            $('#getEmail'+id_kamar).html(data);
     });
     }
     
@@ -340,9 +342,18 @@ function loadTable()
         var kamarData = jQuery.parseJSON(data);
         var data = kamarData['kamar'];
         $.each(kamarData['kamar'], function (i,d) {
+            if(d['status_kamar']=="Lunas")
+            {
+                var row='<tr class="success">';
+                row+='<tr class="success">';
+            }
 
-            var row='<tr class="danger">';
-            row+='<tr class="danger">';
+            else
+            {
+                var row='<tr class="warning">';
+                row+='<tr class="warning">';
+            }
+            
            
            $.each(d, function(j, e) {
                 row+='<td>'+e+'</td>';
